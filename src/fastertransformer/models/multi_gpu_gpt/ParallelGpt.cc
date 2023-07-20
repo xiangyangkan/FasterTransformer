@@ -1578,7 +1578,8 @@ void ParallelGpt<T>::forward(std::unordered_map<std::string, Tensor>*       outp
         if (generation_should_stop) {
             break;
         }
-
+        printf("[INFO] idx: %02d time: %.2f ms\n", step_,
+           ((end1.tv_sec - start1.tv_sec) * 1000 + (end1.tv_usec - start1.tv_usec) * 0.001) );
         POP_RANGE;
     }
     PUSH_RANGE("communicate tensors");
